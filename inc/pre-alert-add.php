@@ -26,7 +26,7 @@
                                                         <div class="form-icon form-icon-left">
                                                             <em class="icon fa-solid fa-barcode"></em>
                                                         </div>
-                                                        <input type="text" class="form-control" name="tracking" id="tracking" placeholder="000000000">
+                                                        <input type="text" class="form-control" name="tracking" id="tracking" placeholder="000000000" data-alert-message="Favor de agregar numero de tracking">
                                                     </div>
                                                 </div>
                                             </div>
@@ -37,7 +37,7 @@
                                                         <div class="form-icon form-icon-left">
                                                             <em class="icon fa-solid fa-dollar-sign"></em>
                                                         </div>
-                                                        <input type="text" class="form-control input-currency" name="cost" id="cost" placeholder="0.00">
+                                                        <input type="text" class="form-control input-currency" name="cost" id="cost" placeholder="0.00" data-alert-message="Favor de agregar costo del producto">
                                                     </div>
                                                 </div>
                                             </div>
@@ -45,7 +45,7 @@
                                                 <div class="form-group">
                                                     <label class="form-label" form="cost">Valor del producto</label>
                                                     <div class="form-control-wrap">
-                                                        <select class="form-select" name="id_category"  id="id_category">
+                                                        <select class="form-select" name="id_category"  id="id_category" data-alert-message="Favor selecionar la categoria">
                                                             <option selected disabled hidden value>--CATEGORIA--</option>
                                                             <?php foreach(Packages::getCategorySelect() as $cat) { ?>
                                                                 <option value="<?php echo $cat->id ?>"><?php echo $cat->text ?></option>
@@ -56,7 +56,7 @@
                                             </div>
                                             <div class="col-12 mt-3 d-flex justify-content-center">
                                                 <div class="d-none">
-                                                    <input type="file" name="file" id="file" accept="image/*" >
+                                                    <input type="file" name="file" id="file" accept="image/*" data-alert-message="Favor agregar factura de compra" >
                                                 </div>
                                                 <div style="border: 2px dashed #dfdfdf;" class="p-5 col-12 col-md-8"  >
                                                     <div class="pointer-on upload-file">
