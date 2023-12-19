@@ -1,0 +1,227 @@
+
+.loader {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    z-index: 10000;
+}
+.dark-mode .loader{
+    background: #101924;
+}
+
+.h-45px {
+    height: 45px !important;
+}
+
+.note-group-select-from-files {
+    display: none;
+}
+
+/* Estilo para la línea de tiempo */
+.timeline-show-tracking {
+    list-style: none;
+    padding: 0;
+}
+
+/* Estilo para los elementos de la línea de tiempo */
+.timeline--show-tracking li {
+    margin-bottom: 20px;
+}
+
+/* Estilo para la fecha y hora */
+.timeline-show-tracking .datetime {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* Estilo para el contenido del registro */
+.timeline-show-tracking .content {
+    display: inline;
+}
+#modal-logo-courier{
+    width: 30px;
+    border-radius: 3px;
+}
+#modal-status-text::first-word {
+    font-weight: bold;  
+}
+.vertical-align-middle{
+    vertical-align: middle;
+}
+.input-totaliti{
+    border: none !important;
+    text-align: left;
+    width: 100%;
+}
+.input-totaliti:focus, .input-totaliti:focus-visible{
+    border: none !important;
+    box-shadow: none;
+    outline: none;
+}
+.input-totaliti.in-bg-1{
+ background-color:   #f5f6fa
+}
+.error .select2-selection {
+    border-color: red;
+}
+.border-none{
+    border: none !important;
+}
+.package-details{
+    position: relative;
+}
+.package-details input{
+    border: 10px solid #ecf0f1
+}
+.package-details span{
+    position: absolute;
+    top: 35%;
+    right: 15px;
+    font-size: 11px;
+    line-height: 1.2;
+    letter-spacing: 0.2em;
+    color: #8094ae;
+    font-weight: 700;
+    font-family: "DM Sans", sans-serif;
+}
+.hiden{
+    display: none;
+}
+.pointer.on{
+    cursor: pointer;
+}
+.pointer-off{
+    cursor: auto;
+}
+#package-list{
+    border: 1px solid #e5e9f2;
+    border-radius: 4px;
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+.length-datatable-package-list select{
+    margin: 0 10px;
+}
+@media(min-width: 1200px) {
+
+    .nk-sidebar {
+        width: 250px;
+    }
+    .nk-sidebar+.nk-wrap>.nk-header-fixed, .nk-sidebar-overlay+.nk-wrap>.nk-header-fixed {
+        left: 249px;
+    }
+    .nk-sidebar+.nk-wrap, .nk-sidebar-overlay+.nk-wrap {
+        padding-left: 249px;
+    }
+}
+.nk-sidebar-head {
+    width: 249px;
+}
+.package-add-step-2{
+    display: none;
+}
+#body-item tr:nth-child(odd) .input-totaliti {
+    background: #f5f6fa;
+}
+.pointer-on{
+    cursor: pointer;
+}
+#costomers-menber div{
+    margin: 2px 2px;
+}
+#costomers-menber div:hover .customer-group-menber{
+    display: block;
+}
+.customer-group-menber{
+    top: -8px;
+    z-index: 1;
+    right: 1px;
+    position: absolute;
+    cursor: pointer;
+    color: red;
+    display: none;
+}
+.vertical-align-bottom{
+    vertical-align: bottom;
+}
+.top-10px{
+    top: 10px;
+}
+.logo-general-config{
+    border: 10px solid #0000000a;
+    padding: 10px;
+    border-radius: 10px;
+}
+.logo-general-config .btn-change-area{
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0006
+}
+.logo-general-config:hover .btn-change-area{
+    display: block;
+}
+.logo-general-config .btn-change-area .icono{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    color: #fff;
+    font-size: 32px;
+    cursor: pointer;
+}
+.hidden{
+    display: none;
+}
+.services-list-edit input[type="text"]:disabled{
+    transition: background-color .3s, box-shadow .3s;
+    background-color: #fff;
+    border: none;
+}
+.services-list-edit tr:hover input[type="text"]:disabled{
+    background-color: #f8f9fc !important;
+}
+.address-services .icon{
+    display: none;
+}
+.address-services .line:hover .icon{
+    display: inline;
+}
+.btn-payment-yappy{
+    color: white !important;
+    background: #004C97 !important;
+    color: transparent !important;
+    font-size: 0;
+}
+.btn-payment-yappy:hover {
+    background: #003882 !important;
+}
+.btn-payment-yappy::before{
+    content: 'Pagar con ';
+    color: #fff;
+    font-size: .85rem;
+    padding-right: 10px ;
+}
+.btn-payment-yappy::after {
+    content: '';
+    display: inline-block;
+    width: 97px;
+    height: 26px;
+    background-image: url(../img/yappy-logo-brand.svg);
+    background-repeat: no-repeat;
+    align-self: center;
+}
+.change-avatar{
+    background-color: #0000009c;
+    border-radius: 50%;
+    display: none
+}
+.avatar-content-perfil:hover .change-avatar{
+    display: block;
+}
+.fs-80px{
+    font-size: 80px;
+}

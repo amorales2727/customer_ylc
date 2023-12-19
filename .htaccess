@@ -1,0 +1,10 @@
+RewriteEngine on
+#core
+RewriteRule ^fetch/([A-Za-z0-9_-]+)$ lib/request/$1.php
+RewriteRule ^AuthToken/([A-Za-z0-9_-]+)$ AuthToken.php?token=$1
+RewriteRule ^img/([A-Za-z]+)/([0-9]+)$ img/index.php?type=$1&id=$2 [L]
+
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
