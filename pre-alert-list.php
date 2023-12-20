@@ -7,7 +7,7 @@
     $customer = Customers::getSession();
 
     Theme::header([
-        'title' => 'Dashboard',
+        'title' => 'Mis Pre-Alertas',
         'css' => ['ylc-boxes.min', 'font-awesome.min', 'theme']
     ]);
 
