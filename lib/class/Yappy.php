@@ -26,7 +26,7 @@
                     self::$secretKey,
                     true,
                     $checkCredentials["accessToken"],
-                    '6000-0000'
+                    ''
                 );
                 $response = $bg->createHash();
                 JSON($response);

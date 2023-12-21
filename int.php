@@ -1,6 +1,6 @@
 <?php
 
-    define('VERSION', '1.0.3');
+    define('VERSION', '1.0.2');
 
     require_once 'lib/config.php';
     require_once 'lib/class/ClassCore.php';

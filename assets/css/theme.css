@@ -190,29 +190,13 @@
 .address-services .line:hover .icon{
     display: inline;
 }
-.btn-payment-yappy{
-    color: white !important;
+.btn-yappy{
     background: #004C97 !important;
-    color: transparent !important;
-    font-size: 0;
+    padding: 5px 21px;
+    border-radius: 7px;
 }
-.btn-payment-yappy:hover {
+.btn-yappy:hover {
     background: #003882 !important;
-}
-.btn-payment-yappy::before{
-    content: 'Pagar con ';
-    color: #fff;
-    font-size: .85rem;
-    padding-right: 10px ;
-}
-.btn-payment-yappy::after {
-    content: '';
-    display: inline-block;
-    width: 97px;
-    height: 26px;
-    background-image: url(../img/yappy-logo-brand.svg);
-    background-repeat: no-repeat;
-    align-self: center;
 }
 .change-avatar{
     background-color: #0000009c;

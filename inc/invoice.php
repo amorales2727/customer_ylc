@@ -58,7 +58,7 @@
                                                                     <ul class="link-list-opt no-bdr">
                                                                         <?php if($invoice->id_status != 3) : ?>
                                                                         <li>
-                                                                            <a href="#" class="payment" data-total="<?php echo $invoice->total ?>" data-bs-toggle="modal" data-bs-target="#payment-form">
+                                                                            <a href="checkout/package/<?php echo $invoice->token ?>" class="payment">
                                                                                 <em class="icon fa-solid fa-money-bill"></em>
                                                                                 <span>Pagar</span>
                                                                             </a>
