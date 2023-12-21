@@ -3,3 +3,4 @@ tmp/*jpg
 tmp/*jpeg
 tmp/*png
 lib/config.php
+logs/*json
