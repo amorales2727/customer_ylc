@@ -19,7 +19,7 @@
                     $checkCredentials['unixTimestamp'],
                     "YAP",
                     "PAG",
-                    $data->token_invoice,
+                    $data->id_invoice,
                     self::$url_success,
                     self::$url_fail,
                     self::$domain,
