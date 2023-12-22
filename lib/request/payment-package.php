@@ -13,7 +13,7 @@
                 'total'    => $invoice->total,
                 'subtotal' => $invoice->sub_total,
                 'taxes'    => $invoice->itbms,
-                'token_invoice' => $invoice->token
+                'id_invoice' => $invoice->id
                 
             ]);
             break;
