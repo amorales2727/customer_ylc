@@ -9,15 +9,21 @@
 
     switch($payment_method){
         case '3':
-            Yappi::sendPayment((object) [
+            $result = Yappi::sendPayment((object) [
                 'total'    => $invoice->total,
                 'subtotal' => $invoice->sub_total,
                 'taxes'    => $invoice->itbms,
                 'id_invoice' => $invoice->id
                 
             ]);
+            if(isset($result['url'])){
+                JSON($result);
+            }else{
+                JSON(['error' => true, 'result' =>$result], 400);
+            }
             break;
         default:
-            //functin
+            $result = Payment::genUrl($invoice->id, $invoice->customer_locker);
+            JSON($result);
             break;
     }

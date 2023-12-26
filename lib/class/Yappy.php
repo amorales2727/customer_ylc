@@ -28,8 +28,9 @@
                     $checkCredentials["accessToken"],
                     ''
                 );
-                $response = $bg->createHash();
-                JSON($response);
+                $Yappy = $bg->createHash();
+                Payment::setHash(3, $Yappy->hash, $data->token->invoice);
+                return $Yappy;
             }
         }
     }

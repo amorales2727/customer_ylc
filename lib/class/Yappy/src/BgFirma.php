@@ -80,8 +80,9 @@ class BgFirma{
                 'sbx' => $this->sandbox === false ? 'no' : 'yes',
                 'tel' => $this->validate_phone($this->tel)
             ];
-            return [
+            return (object) [
                 'success' => true,
+                'hash' => $signature,
                 'url' => self::URLSITE . '?' . http_build_query($data, '', '&', PHP_QUERY_RFC3986)
             ];
         }

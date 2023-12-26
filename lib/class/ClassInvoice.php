@@ -29,6 +29,7 @@
                     i.date_create,
                     s.name as service,
                     p.tracking,
+                    p.customer_locker,
                     i.price_pound,
                     i.pound_qty,
                     i.total_pound,
@@ -48,4 +49,5 @@
             
             return $invoice;
         }
+        
     }
