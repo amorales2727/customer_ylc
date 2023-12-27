@@ -52,4 +52,15 @@
         public static function updateStatus($id, $status){
             query("UPDATE invoices SET id_status = '$status', balance = 0.00 WHERE id = '$id'");
         }
+        public static function getById($id){
+            $result = query("SELECT
+                    i.id,
+                    i.total
+                FROM
+                    invoices i
+                INNER JOIN packages p ON p.id = i.id_package
+                INNER JOIN customers c ON c.locker = p.customer_locker 
+                WHERE i.id = '$id';");
+            $result;
+        }
     }

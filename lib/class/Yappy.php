@@ -43,5 +43,21 @@
                     ) VALUES (
                 '$data->id_invoice','$data->amount_paid', '$data->balance','$data->id_method', '$data->num_reference', '$data->id_type', '$data->date_created', '$data->status')");
         }
+        public static function validateHash(){
+            try {
+                include 'env.php'; // IMPORTAR ARCHIVO DE ENV PARA UTILIZAR LA VARIABLE 'CLAVE_SECRETA'
+                $orderId = $_GET['orderId'];
+                $status = $_GET['status'];
+                $hash = $_GET['hash'];
+                $domain = $_GET['domain'];
+                $values = base64_decode(self::$secretKey);
+                $secrete = explode('.', $values);
+                $signature =  hash_hmac('sha256', $orderId . $status . $domain, $secrete[0]);
+                $success = strcmp($hash, $signature) === 0;
+            } catch (\Throwable $th) {
+                $success = false;
+            }
+            return $success;
+        }
     }
     
