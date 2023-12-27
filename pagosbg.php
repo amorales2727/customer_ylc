@@ -11,11 +11,10 @@ $_GET = array(
 );
 
     if (isset($_GET['orderId']) && isset($_GET['status']) && isset($_GET['domain']) && isset($_GET['hash'])) {
-        header('Content-Type: application/json');
+        
         $invoice = Payment::checketHash($_GET['hash']);
+        
         if ($invoice) {
-            echo 1;
-        }else{
-            echo 2;
+            JSON($invoice);
         }
     }
