@@ -17,7 +17,7 @@
                 'token_invoice' => $invoice->token
                 
             ]);
-            if(isset($result['url'])){
+            if(isset($result->url)){
                 JSON($result);
             }else{
                 JSON(['error' => true, 'result' =>$result], 400);
