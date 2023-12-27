@@ -5,8 +5,8 @@
         
         private static $merchantId  = 'c671352d-b8ba-40f7-9caa-123de75a7d45';
         private static $secretKey   = 'WVBfRTAwOUYwNzItMzBCMi0zRDg3LTgyMjktMzJGNDQ0Njk3RjVCLmM2NzEzNTJkLWI4YmEtNDBmNy05Y2FhLTEyM2RlNzVhN2Q0NQ==';
-        private static $url_success = 'ylcboxespanama.com';
-        private static $url_fail    = 'ylcboxespanama.com';
+        private static $url_success = 'https://ylcboxespanama.com';
+        private static $url_fail    = 'https://ylcboxespanama.com';
         private static $domain      = 'https://ylcboxespanama.com';
         public static function  sendPayment($data){
             $checkCredentials = self::checkCredentials(self::$merchantId, self:: $secretKey, self::$domain );
