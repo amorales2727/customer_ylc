@@ -13,7 +13,8 @@
                 'total'    => $invoice->total,
                 'subtotal' => $invoice->sub_total,
                 'taxes'    => $invoice->itbms,
-                'id_invoice' => $invoice->id
+                'id_invoice' => $invoice->id,
+                'token_invoice' => $invoice->token
                 
             ]);
             if(isset($result['url'])){
