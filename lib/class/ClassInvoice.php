@@ -49,5 +49,7 @@
             
             return $invoice;
         }
-        
+        public static function updateStatus($id, $status){
+            query("UPDATE invoices SET id_status = '$status', balance = 0.00 WHERE id = '$id'");
+        }
     }

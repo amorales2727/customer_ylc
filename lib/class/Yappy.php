@@ -8,6 +8,7 @@
         private static $url_success = 'https://customers.ylcboxespanama.com/';
         private static $url_fail    = 'https://customers.ylcboxespanama.com/';
         private static $domain      = 'https://customers.ylcboxespanama.com/';
+
         public static function  sendPayment($data){
             $checkCredentials = self::checkCredentials(self::$merchantId, self:: $secretKey, self::$domain );
             if($checkCredentials['success'] = true){
@@ -32,6 +33,15 @@
                 Payment::setHash(3, $Yappy->hash, $data->token_invoice);
                 return $Yappy;
             }
+        }
+        public static function setPayment($data){
+            $data->date_created =  date('Y-m-d H:i:s');
+            $data->status = 3;
+
+            query("INSERT INTO payment(
+                id_invoice, amount_paid, balance, id_method, num_reference, id_type, date_created, status
+                    ) VALUES (
+                '$data->id_invoice','$data->amount_paid', '$data->balance','$data->id_method', '$data->num_reference', '$data->id_type', '$data->date_created', '$data->status')");
         }
     }
     

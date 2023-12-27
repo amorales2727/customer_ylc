@@ -35,4 +35,21 @@
                 '$date_create', '$id_method', '$token', '$invoice_token')"
             ,);
         }
+        public static function disableToken($token){
+            query("UPDATE payment_hash SET status = '0' WHERE token = '$token';");
+        }
+        public static function getInvoiceHash($token){
+            $result = query("SELECT
+                    i.id,
+                    i.total,
+                    ph.id_method
+                FROM invoices i
+                INNER JOIN packages p on p.id = i.id_package
+                INNER JOIN customers c ON c.locker = p.customer_locker
+                INNER JOIN payment_hash ph on ph.invoice_token = sha2(concat(c.locker, i.id), 256)
+                WHERE ph.token = '$token' and ph.status = 1;");
+            
+            $val  = ($result) ? $result : false;
+            return $val;
+        }
     }
