@@ -61,6 +61,7 @@
                 INNER JOIN packages p ON p.id = i.id_package
                 INNER JOIN customers c ON c.locker = p.customer_locker 
                 WHERE i.id = '$id';");
-            $result;
+            
+            return $result;
         }
     }
