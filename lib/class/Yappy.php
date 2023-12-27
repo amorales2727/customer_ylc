@@ -18,7 +18,7 @@
                     $data->taxes,
                     $checkCredentials['unixTimestamp'],
                     "YAP",
-                    "PAG",
+                    "VEN",
                     $data->id_invoice,
                     self::$url_success,
                     self::$url_fail,
