@@ -29,7 +29,7 @@
                     ''
                 );
                 $Yappy = $bg->createHash();
-                Payment::setHash(3, $Yappy->hash, $data->token_invoice);
+                Payment::setHash(3, $Yappy->hash, $data->token);
                 return $Yappy;
             }
         }
