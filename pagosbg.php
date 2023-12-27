@@ -20,5 +20,6 @@
                     'id_type'      => 1
                 ));
             }
+            JSON(['success' => true]);
         }
     }
