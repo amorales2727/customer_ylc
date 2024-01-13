@@ -10,7 +10,7 @@
 
             if($_GET['status'] == 'E') {
                 $invoice = Invoice::getById($_GET['orderId']);
-                Invoice::updateStatus($invoice->id, 3);
+                Invoice::updateStatus($invoice->id, 3, $invoice->total);
                 Yappi::setPayment((object) array(
                     'id_invoice'  => $invoice->id,
                     'amount_paid' => $invoice->total,

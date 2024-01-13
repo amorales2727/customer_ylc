@@ -66,9 +66,9 @@
                     o.id = c.id_office
                 LEFT JOIN customer_address ca ON
                     ca.customer_locker = c.locker
-                LEFT JOIN provincia p on p.id = ca.id_provincia
-                LEFT JOIN distrito d on d.id  = ca.id_distrito
-                LEFT JOIN corregimiento co on co.id = ca.id_corregimiento 
+                LEFT JOIN provincia p on p.id = c.id_provincia
+                LEFT JOIN distrito d on d.id  = c.id_distrito
+                LEFT JOIN corregimiento co on co.id = c.id_corregimiento 
                 WHERE c.locker = '$locker';");
                 
                 $customer->avatar = (!empty($customer->avatar)) ? 'img/avatar/' . $customer->locker : '';
@@ -105,23 +105,10 @@
             $conexion->execute();
         }
         public static function updateAddress($data){
-            query("DELETE FROM customer_address WHERE customer_locker = '$data->locker'");
-            query("INSERT INTO customer_address(
-                customer_locker,
-                id_provincia,
-                id_distrito,
-                id_corregimiento,
-                address,
-                lat,
-                lng
-                ) VALUES (
-                    '$data->locker',
-                    '$data->id_provincia',
-                    '$data->id_distrito',
-                    '$data->id_corregimiento',
-                    '$data->address',
-                    '$data->lat',
-                    '$data->lng'
-                )");
+            foreach($data as $key => $val){
+                if($key != 'locker'){
+                    query("UPDATE customers SET $key = '$val' WHERE locker = '$data->locker'");
+                }
+            }
         }
     }

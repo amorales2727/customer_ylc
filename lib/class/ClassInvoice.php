@@ -17,7 +17,7 @@
                     INNER JOIN customers c ON c.locker = p.customer_locker
                     INNER JOIN services s ON s.id = p.id_service
                     INNER JOIN invoice_status ist ON ist.id = i.id_status
-                WHERE c.locker = '$customer->locker';
+                WHERE c.locker = '$customer->locker' and ist.id NOT IN (4);
             ", 'ALL');
 
             return $invoices;
@@ -26,6 +26,8 @@
             $token = preg_replace('/[^\da-zA-Z]/', '', $token);
             $invoice = query("SELECT
                     i.id,
+                    i.id_package,
+                    concat(p.type, i.id) as num_order,
                     i.date_create,
                     s.name as service,
                     p.tracking,
@@ -46,13 +48,21 @@
                 inner join services s  on s.id = p.id_service 
                 where sha2(concat(c.locker, i.id), 256) = '$token'
             ");
+
+            $invoice->subItems = self::getSubItems($invoice->id_package);
             
             return $invoice;
+        }
+        private static function getSubItems($id_package){
+            $sub = query("SELECT * FROM invoice_subservice WHERE id_package = '$id_package'", 'ALL');
+
+            return $sub;
         }
         public static function updateStatus($id, $status){
             query("UPDATE invoices SET id_status = '$status', balance = 0.00 WHERE id = '$id'");
         }
         public static function getById($id){
+            $id = str_replace(['-', 'QT', 'PKG', ' ', ], '', $id);
             $result = query("SELECT
                     i.id,
                     i.total

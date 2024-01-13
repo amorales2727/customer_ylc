@@ -16,6 +16,7 @@
     require_once 'lib/class/Yappy.php';
     require_once 'lib/class/Prealert.php';
     require_once 'lib/class/Tracking.php';
+    require_once 'lib/class/Shop.php';
 
     $config = Core::getConfigAll();
 

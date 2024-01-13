@@ -14,10 +14,10 @@
             
             return $method;
         }
-        public static function genUrl($id_invoice, $locker):object{
+        public static function genUrl($id_invoice, $locker, $invoice_token):object{
             $result = (object)[];
             $token = sha1(date('Y-m-d H:i:s') . $id_invoice . $locker);
-            self::setHash(2, $token, 2);
+            self::setHash(2, $token, $invoice_token);
             $result->url = URL_CUSTOMER_SYSTEM . 'payment/' . $token;
             return $result;
         }
@@ -42,15 +42,59 @@
             $result = query("SELECT
                     i.id,
                     i.total,
-                    ph.id_method
+                    ph.id_method,
+                    i.balance
                 FROM invoices i
                 INNER JOIN packages p on p.id = i.id_package
                 INNER JOIN customers c ON c.locker = p.customer_locker
                 INNER JOIN payment_hash ph on ph.invoice_token = sha2(concat(c.locker, i.id), 256)
                 WHERE ph.token = '$token' and ph.status = 1;");
             
-            $val  = ($result) ? $result : false;
-            return $val;
+            return $result;
+        }
+        public static function addPayment($data){
+            $db = conexion("INSERT INTO payment(
+                    id_invoice,
+                    amount_paid,
+                    balance,
+                    id_method,
+                    num_reference,
+                    id_type,
+                    date_created,
+                    status,
+                    voucher,
+                    voucher_size,
+                    voucher_type
+                ) VALUES (
+                    :id_invoice,
+                    :amount_paid,
+                    :balance,
+                    :id_method,
+                    :num_reference,
+                    :id_type,
+                    :date_created,
+                    :status,
+                    :voucher,
+                    :voucher_size,
+                    :voucher_type
+                )
+            ");
+
+            $db->bindParam(':id_invoice', $data->id_invoice);
+            $db->bindParam(':amount_paid', $data->amount_paid);
+            $db->bindParam(':balance', $data->balance);
+            $db->bindParam(':id_method', $data->id_method);
+            $db->bindParam(':num_reference', $data->num_reference);
+            $db->bindParam(':id_type', $data->id_type);
+            $db->bindParam(':date_created', $data->date_created);
+            $db->bindParam(':status', $data->status);
+            $db->bindParam(':voucher', $data->voucher); // Corregido aquí
+            $db->bindParam(':voucher_size', $data->voucher_size); // Corregido aquí
+            $db->bindParam(':voucher_type', $data->voucher_type); // Corregido aquí
+
+
+            $db->execute();
+            JSON(['success' => true]);
         }
         
     }

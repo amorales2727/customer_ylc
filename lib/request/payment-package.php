@@ -13,7 +13,7 @@
                 'total'    => $invoice->total,
                 'subtotal' => $invoice->sub_total,
                 'taxes'    => $invoice->itbms,
-                'id_invoice' => $invoice->id,
+                'id_invoice' => $invoice->num_orden,
                 'token_invoice' => $invoice->token
                 
             ]);
@@ -24,7 +24,7 @@
             }
             break;
         default:
-            $result = Payment::genUrl($invoice->id, $invoice->customer_locker);
+            $result = Payment::genUrl($invoice->id, $invoice->customer_locker, $invoice->token);
             JSON($result);
             break;
     }

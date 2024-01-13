@@ -15,7 +15,8 @@
                 <div class="nk-content-inner">
                     <div class="nk-content-body">
                         <div class="nk-block-head nk-block-head-sm">
-                            <div class="nk-block-between">
+                            <div class="text-end">
+                                <a href="add-shop" class="btn btn-primary">Agregar</a>
                             </div>
                         </div>
                         <div class="nk-block">
@@ -24,45 +25,36 @@
                                     <thead>
                                         <tr class="nk-tb-item nk-tb-head">
                                             <th class="nk-tb-col"><span>#</span></th>
-                                            <th class="nk-tb-col"><span>Tracking</span></th>
-                                            <th class="nk-tb-col"><span>Peso</span></th>
+                                            <th class="nk-tb-col"><span>URL</span></th>
+                                            <th class="nk-tb-col"><span>Costo del Producto</span></th>
                                             <th class="nk-tb-col"><span>Total</span></th>
                                             <th class="nk-tb-col"><span>Status</span></th>
-                                            <th class="nk-tb-col"><span></span></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach (Packages::getAll() as $packages) { ?>
+                                        <?php foreach (shop::getAll() as $packages) { ?>
                                             <tr class="nk-tb-item">
                                                 <td class="nk-tb-col tb-col-sm">
-                                                    <span class="title"><?php echo  $packages->id ?></span>
+                                                    <span class="title">QT<?php echo  $packages->id ?></span>
                                                 </td>
                                                 <td class="nk-tb-col">
-                                                    <span class="tb-sub"><?php echo  $packages->tracking ?></span>
+                                                    <a href="<?php echo  $packages->url ?>" class="tb-sub">
+                                                        <em class="icon ni ni-link-alt"></em>
+                                                    </a>
                                                 </td>
                                                 <td class="nk-tb-col">
-                                                    <span class="tb-sub"><?php echo  $packages->pound ?></span>
+                                                    <span class="tb-sub"><?php echo showCurrency($packages->product_cost) ?></span>
                                                 </td>
                                                 <td class="nk-tb-col">
-                                                    <span class="tb-sub"><?php echo  showCurrency($packages->total) ?></span>
+                                                    <?php if($packages->total == 0.00) : ?>
+                                                        <span class="tb-sub">pendiente</span>
+                                                    <?php else : ?>
+                                                        <span class="tb-sub"><?php echo  showCurrency($packages->total) ?></span>
+                                                    <?php endif; ?>
+                                                    
                                                 </td>
                                                 <td class="nk-tb-col">
                                                     <span class="tb-sub badge badge-dim bg-outline-<?php echo  $packages->status_color ?>"><?php echo  $packages->status ?></span>
-                                                </td>
-                                                <td class="nk-tb-col nk-tb-col-tools">
-                                                    <ul class="nk-tb-actions gx-1">
-                                                        <li class="nk-tb-action">
-                                                            <?php if(empty($packages->photo)) : ?>
-                                                                <a style="color: #c1c1c1;" href="#" class="btn  btn-icon pointer-off ">
-                                                                    <em class="icon fa-solid fa-camera"></em>
-                                                                </a>
-                                                            <?php else : ?>
-                                                                <a href="#" class="btn btn-trigger btn-icon btn-show-photo" data-url-img="<?php echo $packages->photo ?>" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Wallet" data-bs-original-title="Ver Foto">
-                                                                    <em class="icon fa-solid fa-camera"></em>
-                                                                </a>
-                                                            <?php endif ; ?>
-                                                        </li>
-                                                    </ul>
                                                 </td>
 
                                             </tr>

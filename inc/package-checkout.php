@@ -76,6 +76,14 @@
                                                                         <td><?php echo $invoice->square_meter ?></td>
                                                                         <td><?php echo showCurrency($invoice->total_volumen) ?></td>
                                                                     </tr>
+                                                                    <?php foreach($invoice->subItems as $sub) { ?>
+                                                                        <tr>
+                                                                            <td><?php echo $sub->name ?></td>
+                                                                            <td><?php echo showCurrency($sub->cost) ?></td>
+                                                                            <td><?php echo $sub->qty ?></td>
+                                                                            <td><?php echo showCurrency($sub->total) ?></td>
+                                                                        </tr>
+                                                                    <?php } ?>
                                                                 </tbody>
                                                                 <tfoot>
                                                                     <tr>
