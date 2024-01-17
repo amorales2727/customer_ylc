@@ -37,7 +37,7 @@
                                         </div>
                                         <div class="py-2 address-services">
                                             <span class="line d-block">
-                                                8432 NW 66TH ST
+                                                <?php $service->address ?>
                                                 <em class="px-2 pointer-on icon ni ni-copy"></em>
                                             </span>
                                             <span class="line d-block">
