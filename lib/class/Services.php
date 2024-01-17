@@ -14,7 +14,7 @@
                 FROM
                     services s
                     INNER JOIN customers c on c.id_plan = s.plan
-                WHERE s.type = 'flete' AND c.locker = '$locker';", 'ALL');
+                WHERE s.type = 'flete' AND c.locker = '$locker' and s.status = 1", 'ALL');
             return $services;
         }
     }
