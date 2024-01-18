@@ -36,7 +36,7 @@
                                                 <em class="icom fa-solid fa-ship"></em>
                                             </div>
                                             <div>
-                                                <span>Marítimo</span>
+                                                <span style="font-size: 17px;">Marítimo</span>
                                             </div>
                                         <?php endif;?>
                                     </div>
