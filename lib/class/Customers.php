@@ -57,15 +57,13 @@
                     d.name as distrito,
                     co.id as id_corregimiento,
                     co.name as corregimiento,
-                    ca.address,
-                    ca.	lat,
-                    ca.lng
+                    c.address,
+                    c.lat,
+                    c.lng
                 FROM
                     customers c
                 INNER JOIN offices o ON
                     o.id = c.id_office
-                LEFT JOIN customer_address ca ON
-                    ca.customer_locker = c.locker
                 LEFT JOIN provincia p on p.id = c.id_provincia
                 LEFT JOIN distrito d on d.id  = c.id_distrito
                 LEFT JOIN corregimiento co on co.id = c.id_corregimiento 

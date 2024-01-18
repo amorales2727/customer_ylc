@@ -24,14 +24,14 @@
                                 <div class="card card-body col-sm-5 bg-white shadow-sm mx-2">
                                 <div class="d-flex">
                                     <div style="font-size: 25px;" class="col-2 text-center align-self-center ">
-                                        <?php if($services->shipping_type == 'AEREO') : ?>
+                                        <?php if($service->shipping_type == 'AEREO') : ?>
                                             <div>
                                                 <em class="icom fa-solid fa-plane"></em>
                                             </div>
                                             <div>
                                                 <span>Aéreo</span>
                                             </div>
-                                        <?php elseif($services->shipping_type == 'MARITIMO') : ?>
+                                        <?php elseif($service->shipping_type == 'MARITIMO') : ?>
                                             <div>
                                                 <em class="icom fa-solid fa-ship"></em>
                                             </div>
