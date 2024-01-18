@@ -5,6 +5,7 @@
         public static function  getServices($locker){
             $services = query("SELECT
                     s.name,
+                    s.shipping_type,
                     s.address,
                     s.address2,
                     s.state,

@@ -46,7 +46,7 @@
                                         </div>
                                         <div class="py-2 address-services">
                                             <span class="line d-block">
-                                                <?php $service->address ?>
+                                                <?php echo $service->address ?>
                                                 <em class="px-2 pointer-on icon ni ni-copy"></em>
                                             </span>
                                             <span class="line d-block">
