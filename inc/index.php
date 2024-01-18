@@ -29,7 +29,7 @@
                                                 <em class="icom fa-solid fa-plane"></em>
                                             </div>
                                             <div>
-                                                <span>Aéreo</span>
+                                                <span style="font-size: 17px;">Aéreo</span>
                                             </div>
                                         <?php elseif($service->shipping_type == 'MARITIMO') : ?>
                                             <div>
