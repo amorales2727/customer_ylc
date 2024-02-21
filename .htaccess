@@ -5,6 +5,9 @@ RewriteRule ^AuthToken/([A-Za-z0-9_-]+)$ AuthToken.php?token=$1
 RewriteRule ^img/([A-Za-z]+)/([0-9]+)$ img/index.php?type=$1&id=$2 [L]
 RewriteRule ^checkout/package/([A-Za-z0-9]+)$ package-checkout.php?token=$1
 RewriteRule ^payment/([A-Za-z0-9]+)$ payment.php?token=$1
+RewriteRule ^forgotten/([A-Za-z0-9]+)$ forgotten.php?token=$1
+
+
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.php -f
