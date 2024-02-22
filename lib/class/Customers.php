@@ -109,4 +109,60 @@
                 }
             }
         }
+        static function changePassword($password, $locker){
+
+            $password = passwordEncripted($password);
+
+            $conexion = conexion("UPDATE customers SET password = '$password' WHERE locker = '$locker'");
+
+            $conexion->execute();
+        }
+        static function checkTokenResetPassword($token){
+            $user = query("SELECT
+                    c.locker
+                FROM forget_token ft 
+                INNER JOIN customers c ON c.locker = ft.locker
+                WHERE  ft.token = '$token' and ft.status = 1");
+            return $user;
+        }
+        static function endTokenResetPassword($token){
+            query("DELETE FROM forget_token WHERE token = '$token'");
+        }
+        static function login($data){
+            $inputError =[];
+            if(empty($data->username)){
+                array_push($inputError, ['key' => 'username']);
+            }
+            if(empty($data->password)){
+                array_push($inputError, ['key' => 'password']);
+            }
+            if(count($inputError) > 0){
+                JSON([
+                    'error' => true,
+                    'msg'   => 'complete todo los campos',
+                    'icon'  => 'error',
+                    'input' => $inputError
+                ], 400);
+            }else{
+                $data->username = self::removeAcromin($data->username);
+                $customer = query("SELECT locker, email, password FROM customers WHERE email = '$data->username' or locker = '$data->username' limit 1");
+                if($customer and password_verify($data->password, $customer->password)){
+                    session_start();
+                    $_SESSION['YLC_BOXES_CUSTOMER'] = $customer->locker;
+                    JSON(['error' => false, 'login' => true, 'url' => URL_CUSTOMER_SYSTEM]);
+                }else{
+                    JSON([
+                        'error' => true,
+                        'msg'   => 'Usuario o contraseña son incorrectos',
+                        'icon'  => 'error',
+                    ], 400);
+                }
+            }
+        }
+        private static function removeAcromin($locker){
+            $chronym = [strtolower(chronym_locker), strtoupper(chronym_locker)];
+            $locker = str_replace($chronym, '', $locker);
+
+            return $locker;
+        }
     }

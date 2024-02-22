@@ -92,3 +92,8 @@ function setDate($date){
 
     return $date;
 }
+function passwordEncripted($password){
+    $password = password_hash($password, PASSWORD_DEFAULT, array('cost' => 12));
+
+    return $password;
+}
