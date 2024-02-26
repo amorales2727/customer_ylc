@@ -29,7 +29,7 @@
             return $packages;
         }
         public static function getPhoto($id){
-            $photo = query("SELECT photo as file, photo_type as type FROM packages WHERE id = '$id';");
+            $photo = query("SELECT photo as file, photo_type as type FROM packages_sub WHERE id = '$id';");
             
             return $photo;
 
