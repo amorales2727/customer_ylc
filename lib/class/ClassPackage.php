@@ -4,27 +4,23 @@
         public static function getAll(){
             $locker = Customers::getSession();
             $packages = query("SELECT
-                    p.id,
+                    ps.id,
                     CONCAT('assets/img/courier/', LOWER(cc.name), '.png') as carrier_logo,
-                    p.tracking,
-                    p.photo,
+                    ps.tracking,
+                    ps.photo,
                     CONCAT(p.pound, ' lb') as pound,
-                    ps.name as status,
-                    ps.color as status_color,
-                    i.total                  
-                from
-                    packages p
-                inner join packaging_status ps on
-                    ps.id = p.status
-                inner join customers c on
-                 p.customer_locker = c.locker
-                inner join courier_companies cc on
-                    cc.id = p.id_carrier
-                inner join invoices i on
-                    i.id_package = p.id
-                where c.locker = '$locker->locker' and p.type = 'PKG'
-                ORDER BY id DESC
-                    
+                    pst.name as status,
+                    pst.color as status_color,
+                    i.total,
+                    p.type
+                FROM
+                    packages_sub ps
+                    INNER JOIN packages p ON p.id = ps.parent
+                    inner join courier_companies cc on cc.id = ps.id_carrier
+                    inner join packages_status pst on pst.id = ps.status
+                    inner join invoices i on i.id_package = p.id
+                WHERE
+                    p.customer_locker = '$locker' ORDER BY ps.date_create DESC
             ",'ALL');
             foreach($packages as $key => $package){
                 $package->photo =  (empty($package->photo)) ? '' : 'img/packages/' . $package->id;
