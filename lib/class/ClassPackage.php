@@ -2,7 +2,7 @@
 
     class Packages{
         public static function getAll(){
-            $locker = Customers::getSession();
+            $user = Customers::getSession();
             $packages = query("SELECT
                     ps.id,
                     CONCAT('assets/img/courier/', LOWER(cc.name), '.png') as carrier_logo,
@@ -20,7 +20,7 @@
                     inner join packages_status pst on pst.id = ps.status
                     inner join invoices i on i.id_package = p.id
                 WHERE
-                    p.customer_locker = '$locker' ORDER BY ps.date_create DESC
+                    p.customer_locker = '$user->locker' ORDER BY ps.date_create DESC
             ",'ALL');
             foreach($packages as $key => $package){
                 $package->photo =  (empty($package->photo)) ? '' : 'img/packages/' . $package->id;
