@@ -97,3 +97,20 @@ function passwordEncripted($password){
 
     return $password;
 }
+function setLogs($data){
+    $data->date = date("Y-m-d H:i:s");
+    $db = conexion("INSERT INTO history_logs(
+        date, type, ip, locker, system, id_user, id_reference
+        ) VALUES (
+        :date, :type, :ip, :locker, :system, :id_user, :id_reference)");
+
+    $db->bindParam(':date', $data->date);
+    $db->bindParam(':type', $data->type);
+    $db->bindParam(':ip', $_SERVER['REMOTE_ADDR']);
+    $db->bindParam(':locker', $data->locker);
+    $db->bindParam(':system', $data->system);
+    $db->bindParam(':id_user', $data->id_user);
+    $db->bindParam(':id_reference', $data->id_reference);
+    
+    $db->execute();
+}

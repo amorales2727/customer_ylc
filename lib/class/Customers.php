@@ -150,6 +150,11 @@
                     session_start();
                     $_SESSION['YLC_BOXES_CUSTOMER'] = $customer->locker;
                     JSON(['error' => false, 'login' => true, 'url' => URL_CUSTOMER_SYSTEM]);
+                    setLogs((object) [
+                        'type' => 1,
+                        'locker' => $customer->locker,
+                        'system' => 'customer'
+                    ]);
                 }else{
                     JSON([
                         'error' => true,
