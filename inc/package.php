@@ -26,6 +26,7 @@
                                             <th class="nk-tb-col"><span>#</span></th>
                                             <th class="nk-tb-col"><span>Tracking</span></th>
                                             <th class="nk-tb-col"><span>Peso</span></th>
+                                            <th class="nk-tb-col"><span>Numero de factura</span></th>
                                             <th class="nk-tb-col"><span>Total</span></th>
                                             <th class="nk-tb-col"><span>Status</span></th>
                                             <th class="nk-tb-col"><span></span></th>
@@ -43,6 +44,9 @@
                                                 </td>
                                                 <td class="nk-tb-col">
                                                     <span class="tb-sub"><?php echo  $packages->pound ?></span>
+                                                </td>
+                                                <td class="nk-tb-col">
+                                                    <span class="tb-sub">INV<?php echo  $packages->invoice ?></span>
                                                 </td>
                                                 <td class="nk-tb-col">
                                                     <span class="tb-sub"><?php echo  showCurrency($packages->total) ?></span>
