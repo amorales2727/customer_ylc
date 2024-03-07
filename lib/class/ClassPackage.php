@@ -12,7 +12,7 @@
                     pst.name as status,
                     pst.color as status_color,
                     i.total,
-                    p.type
+                    ps.type
                 FROM
                     packages_sub ps
                     INNER JOIN packages p ON p.id = ps.parent

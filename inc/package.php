@@ -35,7 +35,7 @@
                                         <?php foreach (Packages::getAll() as $packages) { ?>
                                             <tr class="nk-tb-item">
                                                 <td class="nk-tb-col tb-col-sm">
-                                                    <span class="title"><?php echo  $packages->id ?></span>
+                                                    <span class="title"><?php echo  $packages->type . $packages->id ?></span>
                                                 </td>
                                                 <td class="nk-tb-col">
                                                     <span class="tb-sub"><?php echo  $packages->tracking ?></span>
