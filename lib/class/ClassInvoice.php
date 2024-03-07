@@ -6,7 +6,6 @@
             $invoices = query("SELECT
                     i.id,
                     CONCAT(i.pound_qty, 'lb') as pound,
-                    p.tracking,
                     i.total,
                     ist.name as status,
                     ist.id   as id_status,
