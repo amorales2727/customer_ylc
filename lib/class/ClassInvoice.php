@@ -19,6 +19,10 @@
                 WHERE c.locker = '$customer->locker' and ist.id NOT IN (4);
             ", 'ALL');
 
+            foreach($invoices as $i){
+                $i->pkg = query("");
+            }
+
             return $invoices;
         }
         public static function getBytoken($token){

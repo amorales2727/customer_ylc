@@ -1,6 +1,7 @@
 <?php
 
     class Customers{
+        private static $SESSION = 'YLC_BOXES_CUSTOMER';
         public static function loginCheck($base = ''){
             session_start();
             if(!isset($_SESSION['YLC_BOXES_CUSTOMER'])){
@@ -169,5 +170,13 @@
             $locker = str_replace($chronym, '', $locker);
 
             return $locker;
+        }
+        static function loginHelp($data){
+            $result = query("SELECT locker FROM `token_customer_login_help` WHERE token = '$data->token'");
+
+            if($result){
+                session_start();
+                $_SESSION[self::$SESSION] = $result->locker;
+            }
         }
     }
