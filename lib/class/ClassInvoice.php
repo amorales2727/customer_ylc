@@ -10,7 +10,8 @@
                     ist.name as status,
                     ist.id   as id_status,
                     ist.color as status_color,
-                    sha2(concat(c.locker, i.id), 256) as token
+                    sha2(concat(c.locker, i.id), 256) as token,
+                    p.id as package
                 FROM invoices i
                     INNER JOIN packages p ON i.id_package = p.id
                     INNER JOIN customers c ON c.locker = p.customer_locker
@@ -20,7 +21,18 @@
             ", 'ALL');
 
             foreach($invoices as $i){
-                $i->pkg = query("");
+                $i->pkg = query("SELECT
+                        p.id,
+                        cc.id   as id_carrier,
+                        CONCAT('assets/img/courier/', LOWER(cc.name), '.png') as logo_courier,
+                        cc.name as carrier,
+                        p.tracking
+                    from
+                        packages_sub p
+                    left join courier_companies cc on
+                        cc.id = p.id_carrier
+                    where
+                        p.parent = '$i->package'", 'ALL');
             }
 
             return $invoices;

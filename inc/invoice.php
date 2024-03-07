@@ -38,7 +38,14 @@
                                                     <span class="title">INV<?php echo  $invoice->id ?></span>
                                                 </td>
                                                 <td class="nk-tb-col">
-                                                    <span class="tb-sub"><?php echo  $invoice->tracking ?></span>
+                                                    <div>
+                                                        <button class="btn btn-dim btn-outline-success btn-show-tracking">
+                                                            Tracking
+                                                            <?php foreach($invoice->pkg as $pkg) {?>
+                                                                <div data-logo-logo-courier="<?php echo $pkg->logo_courier ?>" data-tracking="<?php echo $pkg->tracking?>"></div>
+                                                            <?php } ?>
+                                                        </button>
+                                                    </div>
                                                 </td>
                                                 <td class="nk-tb-col">
                                                     <span class="tb-sub"><?php echo  $invoice->pound ?></span>
