@@ -38,6 +38,7 @@
                                                     <span class="title"><?php echo  $packages->type . $packages->id ?></span>
                                                 </td>
                                                 <td class="nk-tb-col">
+                                                    <img style="width: 25px; border-radius: 2px;" src="<?php echo $packages->carrier_logo ?>">
                                                     <span class="tb-sub"><?php echo  $packages->tracking ?></span>
                                                 </td>
                                                 <td class="nk-tb-col">

@@ -12,7 +12,8 @@
                     pst.name as status,
                     pst.color as status_color,
                     i.total,
-                    ps.type
+                    ps.type,
+                    i.id as invoice
                 FROM
                     packages_sub ps
                     INNER JOIN packages p ON p.id = ps.parent
