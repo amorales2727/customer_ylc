@@ -35,7 +35,7 @@
                                         <?php foreach (Invoice::getAll() as $invoice) { ?>
                                             <tr class="nk-tb-item">
                                                 <td class="nk-tb-col tb-col-sm">
-                                                    <span class="title"><?php echo  $invoice->id ?></span>
+                                                    <span class="title">INV<?php echo  $invoice->id ?></span>
                                                 </td>
                                                 <td class="nk-tb-col">
                                                     <span class="tb-sub"><?php echo  $invoice->tracking ?></span>
