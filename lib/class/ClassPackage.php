@@ -13,7 +13,8 @@
                     pst.color as status_color,
                     i.total,
                     ps.type,
-                    i.id as invoice
+                    i.id as invoice,
+                    concat('photo-package/', ps.id) as photo_url
                 FROM
                     packages_sub ps
                     INNER JOIN packages p ON p.id = ps.parent

@@ -62,7 +62,7 @@
                                                                     <em class="icon fa-solid fa-camera"></em>
                                                                 </a>
                                                             <?php else : ?>
-                                                                <a href="#" class="btn btn-trigger btn-icon btn-show-photo" data-url-img="<?php echo $packages->photo ?>" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Wallet" data-bs-original-title="Ver Foto">
+                                                                <a href="#" class="btn btn-trigger btn-icon btn-show-photo" data-url-img="<?php echo $packages->photo_url ?>" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Wallet" data-bs-original-title="Ver Foto">
                                                                     <em class="icon fa-solid fa-camera"></em>
                                                                 </a>
                                                             <?php endif ; ?>

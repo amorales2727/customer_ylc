@@ -2,7 +2,7 @@ RewriteEngine on
 #core
 RewriteRule ^fetch/([A-Za-z0-9_-]+)$ lib/request/$1.php
 RewriteRule ^AuthToken/([A-Za-z0-9_-]+)$ AuthToken.php?token=$1
-RewriteRule ^img/([A-Za-z]+)/([0-9]+)$ show/show-photo-packge?id=$2 [L]
+RewriteRule ^photo-package/([A-Za-z0-9]+)$ view/show-photo-packge?id=$1 [L]
 RewriteRule ^checkout/package/([A-Za-z0-9]+)$ package-checkout.php?token=$1
 RewriteRule ^payment/([A-Za-z0-9]+)$ payment.php?token=$1
 RewriteRule ^forgotten/([A-Za-z0-9]+)$ forgotten.php?token=$1
