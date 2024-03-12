@@ -395,12 +395,6 @@ class BgFirma{
             return $resp;
         }
 
-        if ((floatval($this->taxes) + floatval($this->subtotal)) !== floatval($this->total)) {
-            $resp["msg"] = sprintf(self::CAMPO_INVALIDO_ERROR, 'Total');
-            $resp['class'] = 'invalid';
-            return $resp;
-        }
-
         if (!preg_match(self::DOMAIN_REGEX, $this->domain) || strlen($this->domain) > 64) {
             $resp["msg"] = sprintf(self::CAMPO_INVALIDO_ERROR, 'Dominio');
             $resp['class'] = 'invalid';
