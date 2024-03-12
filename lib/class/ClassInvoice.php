@@ -42,7 +42,8 @@
             $invoice = query("SELECT
                     i.id,
                     i.id_package,
-                    concat(p.type, i.id) as num_order,
+                    concat('INV', i.id) as num_order,
+                    i.discount,
                     i.date_create,
                     s.name as service,
                     p.customer_locker,

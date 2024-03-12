@@ -5,18 +5,20 @@
     Customers::loginCheckDie();
 
     $invoice = Invoice::getBytoken($_POST['token']);
+    
     $payment_method = $_POST['payment_method'];
 
     switch($payment_method){
         case '3':
-            $result = Yappi::sendPayment((object) [
+            $datos_pay = (object) [
                 'total'    => $invoice->total,
-                'subtotal' => $invoice->sub_total,
+                'subtotal' => (empty($invoice->discount)) ? $invoice->sub_total : $invoice->sub_total - $invoice->discount,
                 'taxes'    => $invoice->itbms,
-                'id_invoice' => $invoice->num_orden,
+                'id_invoice' => $invoice->num_order,
                 'token_invoice' => $invoice->token
                 
-            ]);
+            ];
+            $result = Yappi::sendPayment($datos_pay);
             if(isset($result->url)){
                 JSON($result);
             }else{

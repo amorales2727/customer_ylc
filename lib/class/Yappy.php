@@ -30,7 +30,6 @@
                     ''
                 );
                 $Yappy = $bg->createHash();
-                Payment::setHash(3, $Yappy->hash, $data->token_invoice);
                 return $Yappy;
             }
         }
