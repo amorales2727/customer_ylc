@@ -64,18 +64,14 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
+                                                                    <?php foreach($invoice->packs as $pkg) { ?>
                                                                     <tr>
-                                                                        <td><?php echo $invoice->service . 'Tracking ' . $invoice->tracking ?></td>
+                                                                        <td><?php echo $invoice->service . 'Tracking ' . $pkg->tracking ?></td>
                                                                         <td><?php echo showCurrency($invoice->price_pound) ?></td>
                                                                         <td><?php echo $invoice->pound_qty ?></td>
                                                                         <td><?php echo showCurrency($invoice->total_pound) ?></td>
                                                                     </tr>
-                                                                    <tr>
-                                                                        <td><?php echo $invoice->service . ' Volumen Tracking ' . $invoice->tracking ?></td>
-                                                                        <td><?php echo showCurrency($invoice->price_volumen) ?></td>
-                                                                        <td><?php echo $invoice->square_meter ?></td>
-                                                                        <td><?php echo showCurrency($invoice->total_volumen) ?></td>
-                                                                    </tr>
+                                                                    <?php } ?>
                                                                     <?php foreach($invoice->subItems as $sub) { ?>
                                                                         <tr>
                                                                             <td><?php echo $sub->name ?></td>

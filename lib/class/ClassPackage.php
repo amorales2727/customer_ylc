@@ -53,4 +53,43 @@
 
             return $response->value;
         }
+        public static function getSubPack($id){
+            $packages = query("SELECT
+                        p.id,
+                        DATE_FORMAT(p.date_create, '%d/%m/%Y') as date,
+                        cc.id   as id_carrier,
+                        CONCAT('assets/img/courier/', LOWER(cc.name), '.png') as logo_courier,
+                        cc.name as carrier,
+                        p.tracking,
+                        flight_reference,
+                        p.um,
+                        p.pound,
+                        id_packaging,
+                        p.lengthy,
+                        p.width,
+                        p.height,
+                        ps.id     as id_status,
+                        ps.name   as status,
+                        ps.color  as status_color,
+                        pc.id     as id_category,
+                        pc.name   as category,
+                        p.photo as photo,
+                        concat('photo-package/', p.id) as photo_url
+                    from
+                        packages_sub p
+                    left join  packages_status ps on
+                        ps.id = p.status
+                    left  join  packages_category pc on
+                    	pc.id  = p.id_category
+                    left join courier_companies cc on
+                        cc.id = p.id_carrier
+                    where
+                        p.parent = '$id'", 'ALL');
+                        
+            foreach($packages as $package){
+                $package->photo = (!empty($package->photo)) ?  $package->id : '';
+            }
+            
+            return $packages;
+        }
     }

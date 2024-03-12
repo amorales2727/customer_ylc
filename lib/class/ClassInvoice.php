@@ -45,7 +45,6 @@
                     concat(p.type, i.id) as num_order,
                     i.date_create,
                     s.name as service,
-                    p.tracking,
                     p.customer_locker,
                     i.price_pound,
                     i.pound_qty,
@@ -64,8 +63,11 @@
                 where sha2(concat(c.locker, i.id), 256) = '$token'
             ");
 
-            $invoice->subItems = self::getSubItems($invoice->id_package);
-            
+            if($invoice){
+                $invoice->subItems = self::getSubItems($invoice->id_package);
+                $invoice->packs     = Packages::getSubPack($invoice->id_package);
+            }
+
             return $invoice;
         }
         private static function getSubItems($id_package){
