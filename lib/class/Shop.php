@@ -29,12 +29,14 @@
                 date_create,
                 url,
                 product_cost,
+                description,
                 id_shop
             )
             VALUES(
-                '$data->date_create',
+                '$data->date_created',
                 '$data->url',
                 '$data->product_cost',
+                '$data->description',
                 '$data->id'
             )");
         }
