@@ -48,8 +48,11 @@
         }
         public static function getNewID(){
             $TABLE_SCHEMA = dbname;
-            $TABLE_NAME   = 'packages';
+            $TABLE_NAME   = 'packages_id';
             $response = query("SELECT AUTO_INCREMENT AS value FROM information_schema.TABLES WHERE TABLE_SCHEMA = '$TABLE_SCHEMA' AND TABLE_NAME = '$TABLE_NAME'");
+
+
+            query("INSERT INTO packages_id() VALUES ()");
 
             return $response->value;
         }
