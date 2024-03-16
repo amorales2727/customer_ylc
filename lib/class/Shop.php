@@ -35,7 +35,7 @@
                 '$data->date_create',
                 '$data->url',
                 '$data->product_cost',
-                '$data->id_shop'
+                '$data->id'
             )");
         }
     }
