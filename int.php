@@ -18,6 +18,7 @@
     require_once 'lib/class/Prealert.php';
     require_once 'lib/class/Tracking.php';
     require_once 'lib/class/Shop.php';
+    require_once 'lib/class/ClassEmail.php';
 
     $config = Core::getConfigAll();
 
@@ -26,6 +27,8 @@
     define('smtp_host',       $config['smtp_host']);
     define('smtp_email',      $config['smtp_email']);
     define('smtp_password',   $config['smtp_password']);
+    define('smtp_from',       $config['smtp_from']);
+    define('smtp_reply',      $config['smtp_reply']);
     define('smtp_port',       $config['smtp_port']);
     define('COMPANY',         $config['company']);
     define('WEBSITE',         $config['WEBSITE']);
@@ -37,3 +40,4 @@
     define('CITY',             $config['city']);
     define('QUOTE_EXPIRATION', $config['quote_exppiration']);
     define('LOGO_INVOICE',     dir .'assets/img/logo_invoice.png');
+    define('email_request_quote', $config['email_request_quote']);

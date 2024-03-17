@@ -25,7 +25,8 @@
     checkValue(['url', 'product_cost','id_category']);
 
     if(empty($inputEmpty['form'])){
-        Shop::add((object) $_POST);
+        $shop = Shop::add((object) $_POST);
+        Shop::sendNotification($shop);
     }else{
         $inputEmpty['icon'] = 'error';
         $inputEmpty['msg']  = 'Complete todo los campos';
