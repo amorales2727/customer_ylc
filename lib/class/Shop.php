@@ -122,7 +122,10 @@
             Email::send(
                 (object) [
                     'address' => email_request_quote,
-                    'data' => (object)[],
+                    'data' => (object)[
+                        'customer' => $data->locker . ' ' . $data->customer_name,
+                        'id'       => $data->id
+                    ],
                     'id_templente' => 8,
                     'name' => 'YLCBoxes'
                 ]
