@@ -3,6 +3,7 @@
     define('VERSION', '1.0.2');
 
     require_once 'lib/config.php';
+    require_once 'lib/vendor/autoload.php';
     require_once 'lib/class/ClassCore.php';
     require_once 'lib/class/Conexion.php';
     require_once 'lib/functions.php';
