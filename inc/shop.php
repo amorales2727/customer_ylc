@@ -35,26 +35,21 @@
                                         <?php foreach (shop::getAll() as $packages) { ?>
                                             <tr class="nk-tb-item">
                                                 <td class="nk-tb-col tb-col-sm">
-                                                    <span class="title">QT<?php echo  $packages->id ?></span>
+                                                    <span class="title">SHOP<?php echo  $packages->id ?></span>
                                                 </td>
                                                 <td class="nk-tb-col">
-                                                    <a href="<?php echo  $packages->url ?>" class="tb-sub">
-                                                        <em class="icon ni ni-link-alt"></em>
+                                                    <a href="#" class="btn btn-trigger btn-icon show-url-shop" data-url="<?php echo $packages->url ?>" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="URL" data-bs-original-title="URL">
+                                                        <em class="icon ni ni-link"></em>
                                                     </a>
                                                 </td>
                                                 <td class="nk-tb-col">
                                                     <span class="tb-sub"><?php echo showCurrency($packages->product_cost) ?></span>
                                                 </td>
                                                 <td class="nk-tb-col">
-                                                    <?php if($packages->total == 0.00) : ?>
-                                                        <span class="tb-sub">pendiente</span>
-                                                    <?php else : ?>
-                                                        <span class="tb-sub"><?php echo  showCurrency($packages->total) ?></span>
-                                                    <?php endif; ?>
-                                                    
+                                                    <span class="tb-sub"><?php echo showCurrency($packages->total) ?></span>
                                                 </td>
                                                 <td class="nk-tb-col">
-                                                    <span class="tb-sub badge badge-dim bg-outline-<?php echo  $packages->status_color ?>"><?php echo  $packages->status ?></span>
+                                                    <span class="tb-sub"><?php echo $packages->status ?></span>
                                                 </td>
 
                                             </tr>

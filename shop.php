@@ -15,5 +15,5 @@
 
     Theme::footer([
         'js' => ['bundle', 'scripts'],
-        'dataJS' => ['package']
+        'dataJS' => ['shop']
     ]);

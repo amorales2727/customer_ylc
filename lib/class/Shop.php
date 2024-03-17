@@ -12,8 +12,14 @@
         public static function getAll(){
             $locker = Customers::getSession()->locker;
             $quote = query("SELECT
-                    *
+                    sp.id,
+                    (SELECT sum(si.product_cost) FROM shop_item si where si.id_shop = sp.id) as product_cost,
+                    (SELECT GROUP_CONCAT(si.url, ',') FROM shop_item si where si.id_shop = sp.id) as url,
+                    i.total,
+                    ps.name as status
                 FROM shop sp
+                left join invoices i on i.id_package = sp.id
+                inner join packages_status ps on ps.id = sp.status
                 WHERE sp.customer_locker = '$locker'
             ", 'ALL');
 
