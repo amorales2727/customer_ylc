@@ -9,9 +9,9 @@
         public static function add($data){
             
             $db = conexion("INSERT INTO pre_alerts(
-                date_create, locker_customer,  tracking, id_category, file, file_type
+                date_create, locker_customer,  tracking, id_category, file, file_type, cost
                     ) VALUES (
-                :date_create, :locker_customer, :tracking, :id_category, :file, :file_type)");
+                :date_create, :locker_customer, :tracking, :id_category, :file, :file_type, :cost)");
             
             $db->bindParam(':date_create', $data->date_created);
             $db->bindParam(':locker_customer', $data->locker);
@@ -19,6 +19,7 @@
             $db->bindParam(':id_category', $data->id_category);
             $db->bindParam(':file', $data->file);
             $db->bindParam(':file_type', $data->file_type);
+            $db->bindParam(':cost', $data->cost);
             
             $db->execute();
         }

@@ -3,6 +3,8 @@
     require '../../int.php';
 
     Customers::loginCheckDie();
+
+    $_POST['tracking'] = trim($_POST['tracking']);
     
     PreAlert::verificTracking($_POST['tracking']);
 
